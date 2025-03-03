@@ -9,6 +9,7 @@ export default function Home() {
       <p className="mt-4 text-lg">운동 기록을 공유하고, 함께 성장하세요.</p>
 
       <KakaoLoginButton />
+      {process.env.NEXT_PUBLIC_TEST}
     </main>
   );
 }

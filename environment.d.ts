@@ -1,5 +1,8 @@
 declare namespace NodeJS {
   export interface ProcessEnv {
+    // ✅ Web
+    NEXT_PUBLIC_PISTACHIO_WEB_URL: string;
+
     // ✅ Supabase
     NEXT_PUBLIC_SUPABASE_URL: string;
     NEXT_PUBLIC_SUPABASE_ANON_KEY: string;

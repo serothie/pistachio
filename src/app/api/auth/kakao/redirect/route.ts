@@ -49,7 +49,8 @@ export async function GET(req: NextRequest) {
     body: new URLSearchParams({
       grant_type: "authorization_code",
       client_id: process.env.NEXT_PUBLIC_KAKAO_REST_API_KEY,
-      redirect_uri: "http://localhost:3000" + ApiPath.KakaoAuthRedirect,
+      redirect_uri:
+        process.env.NEXT_PUBLIC_PISTACHIO_WEB_URL + ApiPath.KakaoAuthRedirect,
       code,
     }),
   });

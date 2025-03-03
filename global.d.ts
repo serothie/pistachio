@@ -14,19 +14,27 @@ export interface KakaoType {
     authorize: ({
       redirectUri,
       scope,
+      prompt,
     }: {
-      redirectUri: string;
+      redirectUri?: string;
+      state?: string;
       scope?: string;
+      prompt?: string;
+      loginHint?: string;
+      nonce?: string;
+      throughTalk?: boolean;
     }) => void;
     logout: (callback?: () => void) => void;
     getAccessToken: () => string | null;
+    setAccessToken: (accessToken: string) => void;
   };
+
   API: {
     request: (options: {
       url: string;
-      success: (res: any) => void;
-      fail?: (err: any) => void;
-    }) => void;
+      data?: object;
+      files?: FileList | Array<File> | Array<Blob>;
+    }) => Promise;
   };
   Share: {
     sendDefault: (options: any) => void;

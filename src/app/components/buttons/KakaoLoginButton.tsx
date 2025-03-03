@@ -7,6 +7,7 @@ export default function KakaoLoginButton() {
   const handleClickButton = () => {
     Kakao.Auth.authorize({
       redirectUri: window.location.origin + ApiPath.KakaoAuthRedirect,
+      prompt: "none",
     });
   };
   return (

@@ -58,7 +58,11 @@ export async function GET(req: NextRequest) {
   const tokenData: KakaoTokenResponse = await tokenRes.json();
   if (!tokenData.access_token) {
     return NextResponse.json(
-      { error: "Failed to get kakao token", reason: tokenData },
+      {
+        error: "Failed to get kakao token",
+        reason: tokenData,
+        redirectUri: process.env.NEXT_PUBLIC_PISTACHIO_WEB_URL,
+      },
       { status: 400 }
     );
   }

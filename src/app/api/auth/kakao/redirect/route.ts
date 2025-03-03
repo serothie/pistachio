@@ -58,7 +58,7 @@ export async function GET(req: NextRequest) {
   const tokenData: KakaoTokenResponse = await tokenRes.json();
   if (!tokenData.access_token) {
     return NextResponse.json(
-      { error: "Failed to get kakao token" },
+      { error: "Failed to get kakao token", reason: tokenData },
       { status: 400 }
     );
   }
@@ -72,7 +72,7 @@ export async function GET(req: NextRequest) {
 
   if (!userData.id) {
     return NextResponse.json(
-      { error: "Failed to get user data" },
+      { error: "Failed to get user data", reason: userData },
       { status: 400 }
     );
   }

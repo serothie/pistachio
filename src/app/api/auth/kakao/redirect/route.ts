@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { supabase } from "@/lib/supabase";
 import jwt from "jsonwebtoken";
-import { ApiPath } from "@/app/constants/paths";
+import { ApiPath, AuthPath } from "@/app/constants/paths";
 
 interface KakaoTokenResponse {
   access_token: string;
@@ -95,7 +95,7 @@ export async function GET(req: NextRequest) {
   // if (error) return NextResponse.json({ error: "Failed to get user data from server" }, { status: 400 });
 
   if (!existingUser) {
-    const signupUrl = new URL("/signup", req.url);
+    const signupUrl = new URL(AuthPath.SignUp, req.url);
     signupUrl.searchParams.set("id", userId);
     signupUrl.searchParams.set("nickname", nickname);
     signupUrl.searchParams.set("profile_image", profileImage);
